@@ -1,0 +1,603 @@
+{
+	"info": {
+		"_postman_id": "bf3ece41-3971-45d5-9a74-3a9670f8a083",
+		"name": "Universita",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Studente",
+			"item": [
+				{
+					"name": "Add",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"nome\": \"{{$randomFirstName}} {{$randomLastName}}\",\n    \"dataNascita\": \"2022-01-01\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/persone/studente",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"persone",
+								"studente"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Add_Error _ALRADY REGISTERED",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"nome\": \"ROBERTO CARTA\",\n    \"dataNascita\": \"1977-10-03\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8080/api/utenti/studente",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"utenti",
+										"studente"
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 24 Feb 2023 11:22:59 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"error\": {\n        \"errorCode\": \"UNI-003\",\n        \"errorDescription\": \"Studente gia' registrato: ROBERTO CARTA\"\n    },\n    \"studente\": null\n}"
+						},
+						{
+							"name": "Add Success",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"nome\": \"{{$randomFirstName}} {{$randomLastName}}\",\n    \"dataNascita\": \"2022-01-01\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8080/api/utenti/studente",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"utenti",
+										"studente"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 24 Feb 2023 11:26:25 GMT"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"error\": null,\n    \"studente\": {\n        \"id\": 4,\n        \"nome\": \"Austyn Ryan\",\n        \"dataNascita\": \"2022-01-01\"\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "Update",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"id\": 15,\n    \"nome\": \"ROBERTO CARTA\",\n    \"dataNascita\": \"2022-01-01\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/persone/studente",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"persone",
+								"studente"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Update SUCESS",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"id\": 15,\n    \"nome\": \"{{$randomFirstName}} {{$randomLastName}}\",\n    \"dataNascita\": \"2022-01-01\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8080/api/persone/studente",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"persone",
+										"studente"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 24 Feb 2023 15:13:56 GMT"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"error\": null,\n    \"studente\": {\n        \"id\": 15,\n        \"nome\": \"Genoveva Skiles\",\n        \"dataNascita\": \"2022-01-01\"\n    }\n}"
+						},
+						{
+							"name": "Update ERROR_ALRADY_REGISTERED",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"id\": 15,\n    \"nome\": \"ROBERTO CARTA\",\n    \"dataNascita\": \"2022-01-01\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8080/api/persone/studente",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"persone",
+										"studente"
+									]
+								}
+							},
+							"status": "Conflict",
+							"code": 409,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 24 Feb 2023 15:16:26 GMT"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"error\": {\n        \"errorCode\": \"UNI-003\",\n        \"errorDescription\": \"Studente gia' registrato con questo nome: ROBERTO CARTA\"\n    },\n    \"studente\": null\n}"
+						}
+					]
+				},
+				{
+					"name": "FindById",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/persone/studente/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"persone",
+								"studente",
+								"1"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "FindById Success",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/api/utenti/studente/1",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"utenti",
+										"studente",
+										"1"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 24 Feb 2023 10:27:48 GMT"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"error\": null,\n    \"studente\": {\n        \"id\": 1,\n        \"nome\": \"ROBERTO CARTA\",\n        \"dataNascita\": \"1977-10-03\"\n    }\n}"
+						},
+						{
+							"name": "FindById NOT_FOUND",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/api/utenti/studente/1000",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"utenti",
+										"studente",
+										"1000"
+									]
+								}
+							},
+							"status": "Not Found",
+							"code": 404,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 24 Feb 2023 10:36:10 GMT"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"error\": {\n        \"errorCode\": \"UNI-0002\",\n        \"errorDescription\": \"Studente non trovato: 1000\"\n    },\n    \"studente\": null\n}"
+						}
+					]
+				},
+				{
+					"name": "FindAll",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/persone/studente",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"persone",
+								"studente"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "FindAll SUCCESS",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/api/persone/studente",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"persone",
+										"studente"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 24 Feb 2023 15:08:17 GMT"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"error\": null,\n    \"studenti\": [\n        {\n            \"id\": 1,\n            \"nome\": \"ROBERTO CARTA\",\n            \"dataNascita\": \"1977-10-03\"\n        },\n        {\n            \"id\": 2,\n            \"nome\": \"GIULIANO BERNARDINI\",\n            \"dataNascita\": \"1991-11-08\"\n        },\n        {\n            \"id\": 4,\n            \"nome\": \"Austyn Ryan\",\n            \"dataNascita\": \"2022-01-01\"\n        },\n        {\n            \"id\": 5,\n            \"nome\": \"Cooper Zemlak\",\n            \"dataNascita\": \"2022-01-01\"\n        },\n        {\n            \"id\": 6,\n            \"nome\": \"Myron Bradtke\",\n            \"dataNascita\": \"2022-01-01\"\n        },\n        {\n            \"id\": 7,\n            \"nome\": \"Betsy Bechtelar\",\n            \"dataNascita\": \"2022-01-01\"\n        },\n        {\n            \"id\": 8,\n            \"nome\": \"Oceane Schowalter\",\n            \"dataNascita\": null\n        },\n        {\n            \"id\": 9,\n            \"nome\": \"Stan Schimmel\",\n            \"dataNascita\": null\n        },\n        {\n            \"id\": 10,\n            \"nome\": \"Haylie Hauck\",\n            \"dataNascita\": null\n        },\n        {\n            \"id\": 11,\n            \"nome\": \"Logan Jerde\",\n            \"dataNascita\": null\n        },\n        {\n            \"id\": 12,\n            \"nome\": \"Fritz Swift\",\n            \"dataNascita\": \"2022-01-01\"\n        },\n        {\n            \"id\": 13,\n            \"nome\": \"Garnett Gerhold\",\n            \"dataNascita\": \"2022-01-01\"\n        },\n        {\n            \"id\": 15,\n            \"nome\": \"Jessie Batz\",\n            \"dataNascita\": \"2022-01-01\"\n        }\n    ]\n}"
+						}
+					]
+				},
+				{
+					"name": "Remove",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/persone/studente/14",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"persone",
+								"studente",
+								"14"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Remove Success",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/api/utenti/studente/14",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"utenti",
+										"studente",
+										"14"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 24 Feb 2023 11:41:54 GMT"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"error\": null\n}"
+						},
+						{
+							"name": "Remove NOT_FOUND",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/api/utenti/studente/14",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"utenti",
+										"studente",
+										"14"
+									]
+								}
+							},
+							"status": "Not Found",
+							"code": 404,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 24 Feb 2023 11:42:14 GMT"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"error\": {\n        \"errorCode\": \"UNI-0002\",\n        \"errorDescription\": \"Studente non trovato: 14\"\n    }\n}"
+						}
+					]
+				}
+			]
+		}
+	]
+}
