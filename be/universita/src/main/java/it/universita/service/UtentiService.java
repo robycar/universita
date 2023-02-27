@@ -1,8 +1,8 @@
 package it.universita.service;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
-import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -10,7 +10,6 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Isolation;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
-import org.springframework.web.bind.annotation.GetMapping;
 
 import it.universita.dto.StudenteDTO;
 import it.universita.exception.ApplicationError;
@@ -59,7 +58,7 @@ public class UtentiService extends AbstractService {
 	}
 
 	public void deleteStudente(int id) {
-		
+
 		log.debug("enter deleteStudente");
 
 		Studente studente = readVO(id);
@@ -71,7 +70,7 @@ public class UtentiService extends AbstractService {
 	public StudenteDTO updateStudente(StudenteDTO dto) {
 
 		log.debug("enter updateStudente");
-		
+
 		Studente vo = readVO(dto.getId());
 		Integer studenteId = vo.getId();
 		if (dto.getNome() != null && !dto.getNome().equals(vo.getNome())) {
@@ -81,7 +80,14 @@ public class UtentiService extends AbstractService {
 			if (existing.isPresent()) {
 				throw makeError(HttpStatus.CONFLICT, ApplicationError.STUDENT_ALRADY_PRESENT,
 						"Studente gia' registrato con questo nome: " + dto.getNome());
+				
 			}
+//			Equivalente a:
+//			Optional<Studente> existing = studenteRepository.findByNome(dto.getNome());
+//			if (existing.isPresent() && existing.get().getId().equals(studenteId)) {
+//				throw makeError(HttpStatus.CONFLICT, ApplicationError.STUDENT_ALRADY_PRESENT,
+//						"Studente gia' registrato con questo nome: " + dto.getNome());
+//			}
 
 			vo.setNome(dto.getNome());
 		}
@@ -97,7 +103,16 @@ public class UtentiService extends AbstractService {
 
 	public List<StudenteDTO> findAllStudenti() {
 		log.debug("enter findAllStudenti");
-		return studenteRepository.findAll().stream().map(StudenteDTO::new).collect(Collectors.toList());
+		
+		//return studenteRepository.findAll().stream().map(StudenteDTO::new).collect(Collectors.toList());
+		
+		List<Studente> studenti = studenteRepository.findAll();
+		ArrayList<StudenteDTO> result = new ArrayList<>(studenti.size());
+		for (Studente s: studenti) {
+			result.add(new StudenteDTO(s));
+			
+		}
+		return result;
 	}
 
 }
