@@ -22,6 +22,10 @@ public class StudenteDTO implements Serializable {
 	
 	private Date dataNascita;
 
+	public StudenteDTO(int id) {
+		this.id = id;
+	}
+	
 	public StudenteDTO(Studente s) {
 		this.id = s.getId();
 		this.nome = s.getNome();

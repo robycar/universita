@@ -25,17 +25,17 @@ import it.universita.controller.payload.UpdateStudenteRequestDTO;
 import it.universita.controller.payload.UpdateStudenteResponseDTO;
 import it.universita.dto.StudenteDTO;
 import it.universita.exception.ApplicationException;
-import it.universita.service.UtentiService;
+import it.universita.service.PersoneService;
 import jakarta.validation.Valid;
 import lombok.extern.slf4j.Slf4j;
 
 @RestController
 @RequestMapping("/api/persone")
 @Slf4j
-public class UtentiController extends AbstractController {
+public class PersoneController extends AbstractController {
 
 	@Autowired
-	private UtentiService utentiService;
+	private PersoneService personeService;
 
 	@GetMapping(path = "/studente/{id}")
 	public ResponseEntity<RetrieveStudenteResponseDTO> retrieveStudente(@PathVariable(required = true) Integer id) {
@@ -44,7 +44,7 @@ public class UtentiController extends AbstractController {
 
 		RetrieveStudenteResponseDTOBuilder<?, ?> responseBuilder = RetrieveStudenteResponseDTO.builder();
 		try {
-			StudenteDTO studente = utentiService.retrieveStudente(id);
+			StudenteDTO studente = personeService.retrieveStudente(id);
 
 			responseBuilder.studente(studente);
 			return ResponseEntity.ok(responseBuilder.build());
@@ -68,7 +68,7 @@ public class UtentiController extends AbstractController {
 
 		AddStudenteResponseDTO response = new AddStudenteResponseDTO();
 		try {
-			studenteDTO = utentiService.createStudente(studenteDTO);
+			studenteDTO = personeService.createStudente(studenteDTO);
 			response.setStudente(studenteDTO);
 
 			return ResponseEntity.status(HttpStatus.CREATED).body(response);
@@ -85,7 +85,7 @@ public class UtentiController extends AbstractController {
 
 		ResponseDTO response = new ResponseDTO();
 		try {
-			utentiService.deleteStudente(id);
+			personeService.deleteStudente(id);
 			return ResponseEntity.ok(response);
 		} catch (ApplicationException e) {
 			return handleApplicationException(response, e);
@@ -108,7 +108,7 @@ public class UtentiController extends AbstractController {
 					.build();
 			// @formatter:on
 			
-			dto = utentiService.updateStudente(dto);
+			dto = personeService.updateStudente(dto);
 			response.setStudente(dto);
 			
 			return ResponseEntity.ok(response);
@@ -126,7 +126,7 @@ public class UtentiController extends AbstractController {
 		
 		StudentiFindAllResponseDTO response = new StudentiFindAllResponseDTO();
 		try {
-			List<StudenteDTO> result = utentiService.findAllStudenti();
+			List<StudenteDTO> result = personeService.findAllStudenti();
 			
 			response.setStudenti(result);
 			

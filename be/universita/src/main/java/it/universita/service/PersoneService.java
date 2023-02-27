@@ -13,31 +13,42 @@ import org.springframework.transaction.annotation.Transactional;
 
 import it.universita.dto.StudenteDTO;
 import it.universita.exception.ApplicationError;
+import it.universita.model.Professore;
 import it.universita.model.Studente;
+import it.universita.repository.ProfessoreRepository;
 import it.universita.repository.StudenteRepository;
 import lombok.extern.slf4j.Slf4j;
 
 @Service
 @Transactional(isolation = Isolation.READ_COMMITTED, propagation = Propagation.REQUIRED)
 @Slf4j
-public class UtentiService extends AbstractService {
+public class PersoneService extends AbstractService {
 
 	@Autowired
 	private StudenteRepository studenteRepository;
+	
+	@Autowired
+	private ProfessoreRepository professoreRepository;
 
 	public StudenteDTO retrieveStudente(int id) {
 
 		log.debug("enter retrieveStudente", id);
 
-		Studente studente = readVO(id);
+		Studente studente = readStudenteVO(id);
 
 		return new StudenteDTO(studente);
 	}
 
-	private Studente readVO(int id) {
+	Studente readStudenteVO(int id) {
 		Optional<Studente> result = studenteRepository.findById(id);
 		return result.orElseThrow(() -> makeError(ApplicationError.STUDENT_NOT_FOUND, "Studente non trovato: " + id));
 	}
+	
+	Professore readProfessoreVO(int id) {
+		Optional<Professore> result = professoreRepository.findById(id);
+		return result.orElseThrow(() -> makeError(ApplicationError.TEACHER_NOT_FOUND, "Studente non trovato: " + id));
+	}
+
 
 	public StudenteDTO createStudente(StudenteDTO studenteDTO) {
 
@@ -61,7 +72,7 @@ public class UtentiService extends AbstractService {
 
 		log.debug("enter deleteStudente");
 
-		Studente studente = readVO(id);
+		Studente studente = readStudenteVO(id);
 		// TODO: Controllare se ci siano o meno esami registrati prima di eliminare lo
 		// studente
 		studenteRepository.delete(studente);
@@ -71,7 +82,7 @@ public class UtentiService extends AbstractService {
 
 		log.debug("enter updateStudente");
 
-		Studente vo = readVO(dto.getId());
+		Studente vo = readStudenteVO(dto.getId());
 		Integer studenteId = vo.getId();
 		if (dto.getNome() != null && !dto.getNome().equals(vo.getNome())) {
 			Optional<Studente> existing = studenteRepository.findByNome(dto.getNome())
@@ -114,5 +125,6 @@ public class UtentiService extends AbstractService {
 		}
 		return result;
 	}
+
 
 }
