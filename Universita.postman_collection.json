@@ -790,6 +790,32 @@
 					]
 				}
 			]
+		},
+		{
+			"name": "Report",
+			"item": [
+				{
+					"name": "Report MaterieEsami Professore",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/report/materieProfessore",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"report",
+								"materieProfessore"
+							]
+						}
+					},
+					"response": []
+				}
+			]
 		}
 	]
 }
