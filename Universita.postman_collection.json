@@ -814,6 +814,36 @@
 						}
 					},
 					"response": []
+				},
+				{
+					"name": "Report Esami per materia",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"materia\": 1,\n    \"fromDate\": \"2022-01-01\",\n    \"toDate\": \"2023-12-31\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/report/esamiPerMateria",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"report",
+								"esamiPerMateria"
+							]
+						}
+					},
+					"response": []
 				}
 			]
 		}

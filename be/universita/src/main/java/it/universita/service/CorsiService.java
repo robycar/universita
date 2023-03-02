@@ -1,5 +1,6 @@
 package it.universita.service;
 
+import java.sql.Date;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -87,6 +88,16 @@ public class CorsiService extends AbstractService {
 		
 		return result;
 		
+	}
+	
+	public List<EsameDTO> esamiPerMateria(int idMateria, Date fromDate, Date toDate) {
+		List<Esame> esami = esameRepository.findByMateriaIdAndDataBetween(idMateria, fromDate, toDate);
+		ArrayList<EsameDTO> result = new ArrayList<>(esami.size());
+		for (Esame esame: esami) {
+			EsameDTO dto = new EsameDTO(esame);
+			result.add(dto);
+		}
+		return result;
 	}
 
 }

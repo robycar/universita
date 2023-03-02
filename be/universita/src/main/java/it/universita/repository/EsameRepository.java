@@ -1,5 +1,6 @@
 package it.universita.repository;
 
+import java.sql.Date;
 import java.util.List;
 
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -25,5 +26,7 @@ public interface EsameRepository extends JpaRepository<Esame, EsameKey> {
 	
 	@Query(nativeQuery = true, value = QRY_REPORT_PROFESSORE_MATERIA)
 	List<ReportProfessoreMateria> reportMaterieEsamePerProfessore();
+
+	List<Esame> findByMateriaIdAndDataBetween(int idMateria, Date fromDate, Date toDate);
 
 }
