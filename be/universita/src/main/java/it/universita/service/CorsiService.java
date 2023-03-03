@@ -91,7 +91,10 @@ public class CorsiService extends AbstractService {
 	}
 	
 	public List<EsameDTO> esamiPerMateria(int idMateria, Date fromDate, Date toDate) {
-		List<Esame> esami = esameRepository.findByMateriaIdAndDataBetween(idMateria, fromDate, toDate);
+		
+		Materia materia = readMateriaVO(idMateria);
+		
+		List<Esame> esami = esameRepository.findByMateriaAndDataBetween(materia, fromDate, toDate);
 		ArrayList<EsameDTO> result = new ArrayList<>(esami.size());
 		for (Esame esame: esami) {
 			EsameDTO dto = new EsameDTO(esame);

@@ -8,6 +8,7 @@ import org.springframework.data.jpa.repository.Query;
 
 import it.universita.model.Esame;
 import it.universita.model.EsameKey;
+import it.universita.model.Materia;
 import it.universita.model.projection.ReportProfessoreMateria;
 
 public interface EsameRepository extends JpaRepository<Esame, EsameKey> {
@@ -27,6 +28,6 @@ public interface EsameRepository extends JpaRepository<Esame, EsameKey> {
 	@Query(nativeQuery = true, value = QRY_REPORT_PROFESSORE_MATERIA)
 	List<ReportProfessoreMateria> reportMaterieEsamePerProfessore();
 
-	List<Esame> findByMateriaIdAndDataBetween(int idMateria, Date fromDate, Date toDate);
+	List<Esame> findByMateriaAndDataBetween(Materia materia, Date fromDate, Date toDate);
 
 }
