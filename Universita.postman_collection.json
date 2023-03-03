@@ -846,6 +846,201 @@
 					"response": []
 				}
 			]
+		},
+		{
+			"name": "Materie",
+			"item": [
+				{
+					"name": "Add materia",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"nome\": \"{{$randomWord}}\",\n    \"materiePropedeutiche\": [1,2,3]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/materia",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"materia"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Add materia Success",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"nome\": \"{{$randomWord}}\",\n    \"materiePropedeutiche\": [1,2,3]\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8080/api/materia",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"materia"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 03 Mar 2023 12:21:10 GMT"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"error\": null,\n    \"materia\": {\n        \"id\": 5,\n        \"nome\": \"Parkways\",\n        \"materiePropedeutiche\": [\n            {\n                \"id\": 1,\n                \"nome\": \"ADVANCED MACHINE LEARNING\",\n                \"materiePropedeutiche\": null\n            },\n            {\n                \"id\": 2,\n                \"nome\": \"FOUNDATIONS OF DATA SCIENCE\",\n                \"materiePropedeutiche\": null\n            },\n            {\n                \"id\": 3,\n                \"nome\": \"COMPUTER VISION\",\n                \"materiePropedeutiche\": null\n            }\n        ]\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "Modifica materia",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"id\": 1,\n    \"nome\": \"ADVANCED MACHINE LEARNING\",\n    \"materiePropedeutiche\": [3,4]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/materia",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"materia"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Add materia Success",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"nome\": \"{{$randomWord}}\",\n    \"materiePropedeutiche\": [1,2,3]\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8080/api/materia",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"materia"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 03 Mar 2023 12:21:10 GMT"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"error\": null,\n    \"materia\": {\n        \"id\": 5,\n        \"nome\": \"Parkways\",\n        \"materiePropedeutiche\": [\n            {\n                \"id\": 1,\n                \"nome\": \"ADVANCED MACHINE LEARNING\",\n                \"materiePropedeutiche\": null\n            },\n            {\n                \"id\": 2,\n                \"nome\": \"FOUNDATIONS OF DATA SCIENCE\",\n                \"materiePropedeutiche\": null\n            },\n            {\n                \"id\": 3,\n                \"nome\": \"COMPUTER VISION\",\n                \"materiePropedeutiche\": null\n            }\n        ]\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "FindAll",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/materia",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"materia"
+							]
+						}
+					},
+					"response": []
+				}
+			]
 		}
 	]
 }
